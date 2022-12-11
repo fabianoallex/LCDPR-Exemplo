@@ -8,14 +8,12 @@ import java.util.Objects;
 public class Main {
     public static void main(String[] args) {
         try {
-            Definitions definitions = new Definitions("lcdpr/v0013/definitions.xml");
-            definitions.setBeginEndSeparator("");
-            definitions.setValidationHelper(new MyValidation());
-            definitions.setFileLoader(fileName -> Objects.requireNonNull(Main.class.getResourceAsStream(fileName)));
-
-            Factory factory = new Factory(definitions);
-
-            LcdprGenerator lcdprGenerator = new LcdprGenerator(factory);
+            LcdprGenerator lcdprGenerator = (LcdprGenerator)
+                    new GeneratorBase.GeneratorBuilder("lcdpr/v0013/definitions.xml")
+                    .setBeginEndSeparator("")
+                    .setValidationHelper(new MyValidation())
+                    .setFileLoader(fileName -> Objects.requireNonNull(Main.class.getResourceAsStream(fileName)))
+                    .build(LcdprGenerator.class);
 
             OpeningRegister openingRegister = lcdprGenerator.getOpeningRegister();
             openingRegister.setNome("Fabiano Alex Arndt");
@@ -23,8 +21,8 @@ public class Main {
             openingRegister.setSituacaoInicioPeriodo(OpeningRegister.SituacaoInicioPeriodo.REGULAR);
             openingRegister.setSituacaoEspecial(OpeningRegister.SituacaoEspecial.NORMAL);
             openingRegister.setDataSituacaoEspecial(new SimpleDateFormat("dd/MM/yyyy").parse("01/10/2021"));
-            openingRegister.setInicialDate(new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2021"));
-            openingRegister.setFinalDate(new SimpleDateFormat("dd/MM/yyyy").parse("31/12/2021"));
+            openingRegister.setDataInicial(new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2021"));
+            openingRegister.setDataFinal(new SimpleDateFormat("dd/MM/yyyy").parse("31/12/2021"));
 
             var block0 = lcdprGenerator.addBlock0();
             var r0010 = block0.add0010();

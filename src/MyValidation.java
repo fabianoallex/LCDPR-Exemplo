@@ -97,7 +97,6 @@ public class MyValidation implements ValidationHelper {
                 sum += dig;
             }
         }
-
         return true;
     }
 }

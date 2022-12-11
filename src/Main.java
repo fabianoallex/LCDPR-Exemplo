@@ -100,6 +100,7 @@ public class Main {
             registerQ100.setTipoDocumento(RegisterQ100.TipoDocumento.NOTA_FISCAL);
             registerQ100.setValor(100.20, RegisterQ100.TipoLancamento.DESPESA);
 
+
             registerQ100 = blockQ.addQ100();
             registerQ100.setData(new SimpleDateFormat("dd/MM/yyyy").parse("15/03/2021"));
             registerQ100.setCodigoImovel(1);

@@ -8,12 +8,12 @@ import java.util.Objects;
 public class Main {
     public static void main(String[] args) {
         try {
-            LcdprGenerator lcdprGenerator = (LcdprGenerator)
-                    new GeneratorBase.GeneratorBuilder("lcdpr/v0013/definitions.xml")
+            LcdprGenerator lcdprGenerator =
+                    new LcdprGenerator.Builder("lcdpr/v0013/definitions.xml")
                     .setBeginEndSeparator("")
                     .setValidationHelper(new MyValidation())
                     .setFileLoader(fileName -> Objects.requireNonNull(Main.class.getResourceAsStream(fileName)))
-                    .build(LcdprGenerator.class);
+                    .build();
 
             OpeningRegister openingRegister = lcdprGenerator.getOpeningRegister();
             openingRegister.setNome("Fabiano Alex Arndt");

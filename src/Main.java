@@ -8,8 +8,7 @@ import java.util.Objects;
 public class Main {
     public static void main(String[] args) {
         try {
-            LcdprGenerator lcdprGenerator =
-                    new LcdprGenerator.Builder("lcdpr/v0013/definitions.xml")
+            var lcdprGenerator = LcdprGenerator.newBuilder("lcdpr/v0013/definitions.xml")
                     .setBeginEndSeparator("")
                     .setValidationHelper(new MyValidation())
                     .setFileLoader(fileName -> Objects.requireNonNull(Main.class.getResourceAsStream(fileName)))
